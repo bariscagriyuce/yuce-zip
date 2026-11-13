@@ -1,0 +1,16 @@
+YUCE ZIP bundles the "7zz" command-line executable of 7-Zip.
+
+7-Zip
+Copyright (C) 1999-2026 Igor Pavlov
+https://www.7-zip.org
+
+Most of the 7-Zip code is distributed under the GNU LGPL license.
+Some parts are distributed under the BSD 3-clause and BSD 2-clause licenses.
+The unRAR code is distributed under the GNU LGPL license with the
+"unRAR license restriction": the code cannot be used to develop a RAR
+(WinRAR) compatible archiver.
+
+The full license text and source code of 7-Zip are available at
+https://www.7-zip.org/license.txt and https://www.7-zip.org/download.html
+
+YUCE ZIP itself is a separate program that calls 7zz as an external process.
