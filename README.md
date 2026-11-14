@@ -3,96 +3,78 @@
 <h1 align="center">YUCE ZIP</h1>
 
 <p align="center">
-  macOS için ücretsiz, açık kaynaklı, grafik arayüzlü arşiv yöneticisi — <b>7-Zip</b> motoruyla.<br>
-  Free, open-source archive manager with a graphical interface for macOS — powered by <b>7-Zip</b>.<br>
-  Gerenciador de arquivos compactados gratuito e de código aberto para macOS — com o mecanismo <b>7-Zip</b>.
+  <a href="README.md">🇹🇷 Türkçe</a> ·
+  <a href="README.en.md">🇬🇧 English</a> ·
+  <a href="README.pt-BR.md">🇧🇷 Português (Brasil)</a>
 </p>
+
+<p align="center">macOS için ücretsiz, açık kaynaklı ve grafik arayüzlü arşiv yöneticisi — <b>7-Zip</b> motoruyla.</p>
 
 <p align="center">
-  <a href="https://github.com/bariscagriyuce/yuce-zip/releases/latest"><b>⬇︎ İndir / Download / Baixar (.dmg)</b></a>
+  <a href="https://github.com/bariscagriyuce/yuce-zip/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/bariscagriyuce/yuce-zip?label=release"></a>
+  <img alt="macOS 13+" src="https://img.shields.io/badge/macOS-13%2B-blue">
+  <img alt="Apple Silicon" src="https://img.shields.io/badge/Apple%20Silicon-arm64-black">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
 </p>
 
+<p align="center"><a href="https://github.com/bariscagriyuce/yuce-zip/releases/latest"><b>⬇︎ YUCE ZIP'i indir (.dmg)</b></a></p>
+
 ---
 
-## 🇹🇷 Türkçe
+## Özellikler
 
-**Özellikler**
-- 7z, ZIP, RAR, TAR, GZ, BZ2, XZ, ZSTD, ISO, DMG, CAB, WIM, ARJ, LZH, CPIO, RPM, DEB ve daha birçok biçimi açar
-- 7z, ZIP, TAR, TAR.GZ, TAR.BZ2, TAR.XZ ve WIM arşivleri oluşturur
-- Arşiv içinde klasörler arasında gezinme, dosyayı çift tıklayarak açma
-- Tümünü ya da yalnızca seçili öğeleri çıkartma, “Buraya Çıkart”
-- AES-256 şifreleme (7z ve ZIP), 7z'de dosya adlarını da şifreleme
-- Parçalara bölme (CD, DVD, FAT32 vb.), sıkıştırma düzeyi seçimi
-- Arşivi sınama, arşive dosya ekleme ve arşivden silme (7z, ZIP, TAR, WIM)
-- Sürükle-bırak: arşiv bırakırsanız açar, dosya bırakırsanız sıkıştırır
-- Finder'da “Birlikte Aç” menüsünde görünür
-- **Türkçe, English, Português (Brasil)** — uygulama içinden anında değiştirilebilir
-- **Güncelleme denetimi:** GitHub Releases üzerinden yeni sürümü kontrol eder
+- **Açar:** 7z, ZIP, RAR, TAR, GZ, BZ2, XZ, ZSTD, ISO, DMG, CAB, WIM, ARJ, LZH, CPIO, RPM, DEB ve daha birçok biçim
+- **Oluşturur:** 7z, ZIP, TAR, TAR.GZ, TAR.BZ2, TAR.XZ ve WIM arşivleri
+- Arşiv içindeki klasörler arasında gezinme; çift tıklayarak dosya açma
+- Tümünü ya da yalnızca seçili öğeleri çıkartma, **Buraya Çıkart**
+- **AES-256 şifreleme** (7z ve ZIP), 7z'de dosya adlarını da şifreleme
+- Parçalara bölme (CD, DVD, FAT32 vb.) ve sıkıştırma düzeyi seçimi
+- Arşivi sınama; arşive dosya ekleme ve arşivden silme (7z, ZIP, TAR, WIM)
+- **Sürükle-bırak:** arşiv bırakırsanız açar, dosya bırakırsanız sıkıştırır
+- Finder'daki **Birlikte Aç** menüsünde görünür
+- **Türkçe, English, Português (Brasil)** arayüz — Ayarlar'dan anında değiştirilir
+- **Güncelleme denetimi:** yeni sürümleri GitHub Releases üzerinden kontrol eder
 
-**Kurulum**
+## Kurulum
+
 1. [Releases](https://github.com/bariscagriyuce/yuce-zip/releases/latest) sayfasından `YUCE-ZIP-x.y.z.dmg` dosyasını indirin.
-2. DMG'yi açın, **YUCE ZIP**'i **Applications** klasörüne sürükleyin.
-3. Uygulama Apple tarafından imzalı ve onaylıdır (notarized); doğrudan açılır.
+2. DMG'yi açın ve **YUCE ZIP**'i **Applications** (Uygulamalar) klasörüne sürükleyin.
+3. Uygulamayı açın. Uygulama Developer ID ile imzalı ve Apple tarafından onaylıdır (notarized), uyarı vermeden açılır.
 
-Gereksinimler: macOS 13 Ventura veya üzeri, Apple Silicon (M1/M2/M3/M4…).
+**Gereksinimler:** macOS 13 Ventura veya üzeri, Apple Silicon (M1, M2, M3, M4…).
 
-## 🇬🇧 English
+## Kullanım
 
-**Features**
-- Opens 7z, ZIP, RAR, TAR, GZ, BZ2, XZ, ZSTD, ISO, DMG, CAB, WIM, ARJ, LZH, CPIO, RPM, DEB and many more
-- Creates 7z, ZIP, TAR, TAR.GZ, TAR.BZ2, TAR.XZ and WIM archives
-- Browse folders inside archives, double-click to open a file
-- Extract everything or only the selected items, “Extract Here”
-- AES-256 encryption (7z and ZIP), file-name encryption for 7z
-- Split into volumes, selectable compression level
-- Test archives, add files to and delete files from archives (7z, ZIP, TAR, WIM)
-- Drag & drop: drop an archive to open it, drop files to compress them
-- Appears in Finder's “Open With” menu
-- **Türkçe, English, Português (Brasil)** — switchable instantly inside the app
-- **Update checker:** looks for new versions on GitHub Releases
+| İşlem | Nasıl yapılır |
+|---|---|
+| Arşiv açma | Arşivi pencereye ya da Dock simgesine sürükleyin, veya **Dosya → Arşiv Aç…** (⌘O) |
+| Sıkıştırma | Dosyaları boş pencereye sürükleyin, veya **Dosya → Dosyaları Sıkıştır…** (⌘K) |
+| Çıkartma | **Çıkart** düğmesi (⌘E) ya da **Buraya Çıkart** (⇧⌘E) |
+| Arşivi sınama | **Sına** düğmesi (⌘T) |
+| Dil değiştirme | **YUCE ZIP → Ayarlar…** (⌘,) |
+| Güncelleme denetimi | **YUCE ZIP → Güncellemeleri Denetle…** |
 
-**Install:** download the DMG from [Releases](https://github.com/bariscagriyuce/yuce-zip/releases/latest), drag **YUCE ZIP** to **Applications**.
-The app is signed with a Developer ID and notarized by Apple.
-
-Requirements: macOS 13 Ventura or later, Apple Silicon.
-
-## 🇧🇷 Português (Brasil)
-
-**Recursos**
-- Abre 7z, ZIP, RAR, TAR, GZ, BZ2, XZ, ZSTD, ISO, DMG, CAB, WIM, ARJ, LZH, CPIO, RPM, DEB e muito mais
-- Cria arquivos 7z, ZIP, TAR, TAR.GZ, TAR.BZ2, TAR.XZ e WIM
-- Navegue pelas pastas dentro do arquivo, clique duas vezes para abrir um item
-- Extraia tudo ou apenas os itens selecionados, “Extrair Aqui”
-- Criptografia AES-256 (7z e ZIP), criptografia de nomes no 7z
-- Divisão em volumes, nível de compressão ajustável
-- Testar, adicionar e excluir itens (7z, ZIP, TAR, WIM)
-- Arrastar e soltar; aparece no menu “Abrir com” do Finder
-- **Türkçe, English, Português (Brasil)** — troca instantânea dentro do app
-- **Verificação de atualizações** pelo GitHub Releases
-
-**Instalação:** baixe o DMG em [Releases](https://github.com/bariscagriyuce/yuce-zip/releases/latest) e arraste o **YUCE ZIP** para **Aplicativos**.
-O app é assinado com Developer ID e notarizado pela Apple.
-
----
-
-## 🛠 Derleme / Build
+## Kaynaktan derleme
 
 ```bash
-brew install sevenzip      # 7zz motoru / engine
-./scripts/build.sh         # -> imzalı + notarize / signed + notarized DMG
-# NOTARY_PROFILE=<profil> ./scripts/build.sh  (varsayılan: pdfstudio-notary)
+brew install sevenzip      # 7zz sıkıştırma motoru
+./scripts/build.sh         # build/YUCE ZIP.app + dist/YUCE-ZIP-<sürüm>.dmg
 ```
 
-Sürüm numarası `VERSION` dosyasındadır. Yeni sürüm yayımlamak için / To publish a new version:
+Betik, keychain'deki **Developer ID Application** sertifikasıyla imzalar ve `notarytool` profili varsa
+DMG'yi Apple'a onaya gönderir (`NOTARY_PROFILE=<profil> ./scripts/build.sh`).
+
+## Yeni sürüm yayımlama
 
 ```bash
 echo 1.0.1 > VERSION && ./scripts/build.sh
-gh release create v1.0.1 dist/YUCE-ZIP-1.0.1.dmg --title "YUCE ZIP 1.0.1" --notes "..."
+gh release create v1.0.1 dist/YUCE-ZIP-1.0.1.dmg --title "YUCE ZIP 1.0.1" --notes "Yenilikler…"
 ```
 
-Uygulama `https://api.github.com/repos/bariscagriyuce/yuce-zip/releases/latest` adresini kontrol eder; etiket (`v1.0.1`) mevcut sürümden yüksekse kullanıcıya indirme önerir.
+Uygulama `https://api.github.com/repos/bariscagriyuce/yuce-zip/releases/latest` adresini kontrol eder;
+etiket (ör. `v1.0.1`) yüklü sürümden yeniyse kullanıcıya indirmeyi önerir.
 
-## Proje yapısı / Project layout
+## Proje yapısı
 
 | Dosya | Açıklama |
 |---|---|
@@ -102,9 +84,10 @@ Uygulama `https://api.github.com/repos/bariscagriyuce/yuce-zip/releases/latest` 
 | `Sources/YuceZip/ArchiveModel.swift` | Arşiv modeli ve işlemler |
 | `Sources/YuceZip/SevenZip.swift` | `7zz` süreç sarmalayıcısı ve çıktı ayrıştırıcı |
 | `Sources/YuceZip/UpdateChecker.swift` | GitHub güncelleme denetimi |
-| `Sources/YuceZip/Localization.swift` | TR / EN / PT-BR çeviriler |
-| `scripts/build.sh` | .app paketleme, ikon, imzalama, DMG |
+| `Sources/YuceZip/Localization.swift` | Türkçe / İngilizce / Portekizce çeviriler |
+| `scripts/build.sh` | .app paketleme, ikon, imzalama, notarization, DMG |
 
-## Lisans / License
+## Lisans
 
-YUCE ZIP: MIT. Gömülü 7-Zip motoru (`7zz`) © Igor Pavlov, GNU LGPL + unRAR kısıtlaması — bkz. [`Resources/7-Zip-License.txt`](Resources/7-Zip-License.txt).
+YUCE ZIP [MIT](LICENSE) lisanslıdır. Gömülü 7-Zip motoru (`7zz`) © Igor Pavlov, GNU LGPL + unRAR kısıtlaması —
+bkz. [`Resources/7-Zip-License.txt`](Resources/7-Zip-License.txt).
