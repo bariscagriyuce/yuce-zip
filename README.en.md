@@ -34,6 +34,8 @@
 - Shows up in Finder's **Open With** menu
 - **Türkçe, English, Português (Brasil)** UI — switch instantly in Settings
 - **Update checker:** looks for new versions on GitHub Releases
+- **Finder right-click menu** (like 7-Zip): *YUCE ZIP ▸* Extract Here, Extract to “name/”, Test Archive, Compress to “name.7z” / “name.zip”, Add to Archive…
+- **Default app:** one click makes it the default app for every archive type
 
 ## Installation
 
@@ -53,6 +55,24 @@
 | Test an archive | **Test** button (⌘T) |
 | Change language | **YUCE ZIP → Settings…** (⌘,) |
 | Check for updates | **YUCE ZIP → Check for Updates…** |
+
+## Making it the default app
+
+**YUCE ZIP → Settings… → System Integration → “Make YUCE ZIP the Default App for Archives”**.
+ZIP, 7z, RAR, TAR, GZ, BZ2, XZ, CAB, RPM, DEB, ARJ, LZH, ZST, WIM, etc. will open with YUCE ZIP (ISO, DMG and JAR stay with the system).
+Manually: right-click a file → **Get Info → Open with: YUCE ZIP → Change All**.
+
+## Finder right-click menu
+
+Right-click a file in Finder to get the **YUCE ZIP ▸** submenu:
+
+| Selection | Options |
+|---|---|
+| Archive | Open with YUCE ZIP · Extract Files… · Extract Here · Extract to “name/” · Test Archive |
+| Any file / folder | Add to Archive… · Compress to “name.7z” · Compress to “name.zip” |
+
+The menu is enabled automatically on first launch. If it doesn't appear, enable “YUCE ZIP” under
+**System Settings → General → Login Items & Extensions → Finder** (or use **Extension Settings…** in Settings). You can turn it off in Settings.
 
 ## Building from source
 
@@ -85,6 +105,8 @@ The app queries `https://api.github.com/repos/bariscagriyuce/yuce-zip/releases/l
 | `Sources/YuceZip/SevenZip.swift` | `7zz` process wrapper and output parser |
 | `Sources/YuceZip/UpdateChecker.swift` | GitHub update checker |
 | `Sources/YuceZip/Localization.swift` | Turkish / English / Portuguese translations |
+| `Sources/YuceZip/Integration.swift` | Default app, Finder menu actions |
+| `FinderExtension/FinderSync.swift` | Finder right-click menu extension |
 | `scripts/build.sh` | App bundling, icon, signing, notarization, DMG |
 
 ## License

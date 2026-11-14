@@ -9,6 +9,9 @@ struct SettingsView: View {
     @State private var level = Prefs.defaultLevel
     @State private var showAfterExtract = Prefs.showAfterExtract
     @State private var autoCheck = Prefs.autoCheckUpdates
+    @State private var isDefault = SystemIntegration.isDefaultForZip
+    @State private var defaultMessage: String?
+    @State private var finderEnabled = SystemIntegration.isFinderExtensionEnabled
 
     var body: some View {
         Form {
@@ -31,6 +34,35 @@ struct SettingsView: View {
                 }
                 .onChange(of: level) { Prefs.defaultLevel = $0 }
             }
+            Section(L("settings.integration")) {
+                HStack {
+                    Image(systemName: isDefault ? "checkmark.circle.fill" : "info.circle")
+                        .foregroundStyle(isDefault ? .green : .secondary)
+                    Text(isDefault ? L("settings.isDefault") : L("settings.notDefault"))
+                        .foregroundStyle(.secondary)
+                }
+                Button(L("settings.makeDefault")) {
+                    Task {
+                        let (ok, failed) = await SystemIntegration.makeDefaultForArchives()
+                        isDefault = SystemIntegration.isDefaultForZip
+                        defaultMessage = LF("settings.defaultDone", ok) + (failed > 0 ? "\n" + LF("settings.defaultFailed", failed) : "")
+                    }
+                }
+                if let defaultMessage {
+                    Text(defaultMessage).font(.caption).foregroundStyle(.secondary)
+                }
+                Toggle(L("settings.finderMenu"), isOn: $finderEnabled)
+                    .onChange(of: finderEnabled) { value in
+                        if value != SystemIntegration.isFinderExtensionEnabled {
+                            SystemIntegration.setFinderExtension(enabled: value)
+                        }
+                    }
+                HStack(alignment: .top) {
+                    Text(L("settings.finderHint")).font(.caption).foregroundStyle(.secondary)
+                    Spacer()
+                    Button(L("settings.finderSettings")) { SystemIntegration.showFinderExtensionSettings() }
+                }
+            }
             Section(L("settings.updates")) {
                 Toggle(L("settings.autoCheck"), isOn: $autoCheck)
                     .onChange(of: autoCheck) { Prefs.autoCheckUpdates = $0 }
@@ -47,7 +79,11 @@ struct SettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .frame(width: 480)
+        .frame(width: 520)
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            isDefault = SystemIntegration.isDefaultForZip
+            finderEnabled = SystemIntegration.isFinderExtensionEnabled
+        }
         .fixedSize(horizontal: false, vertical: true)
         .id(l10n.effectiveCode)
         .environment(\.locale, l10n.locale)

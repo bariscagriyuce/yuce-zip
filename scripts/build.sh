@@ -37,6 +37,16 @@ cp "$SEVENZIP" "$APP/Contents/Resources/7zz"
 chmod 755 "$APP/Contents/Resources/7zz"
 cp "$ROOT/Resources/7-Zip-License.txt" "$APP/Contents/Resources/" 2>/dev/null || true
 
+echo "==> Compiling Finder extension"
+APPEX="$APP/Contents/PlugIns/YuceZipFinder.appex"
+mkdir -p "$APPEX/Contents/MacOS"
+swiftc -O -target arm64-apple-macos13.0 -application-extension -module-name YuceZipFinder \
+  -Xlinker -e -Xlinker _NSExtensionMain \
+  "$ROOT/FinderExtension/FinderSync.swift" "$ROOT/Sources/YuceZip/Localization.swift" \
+  -framework FinderSync -o "$APPEX/Contents/MacOS/YuceZipFinder"
+sed -e "s/__VERSION__/$VERSION/g" -e "s/__BUILD__/$BUILD_NUMBER/g" -e "s/__BUNDLE_ID__/$BUNDLE_ID/g" \
+  "$ROOT/FinderExtension/Info.plist" > "$APPEX/Contents/Info.plist"
+
 echo "==> Generating icon"
 ICONSET="$BUILD_DIR/AppIcon.iconset"
 rm -rf "$ICONSET"; mkdir -p "$ICONSET"
@@ -63,6 +73,7 @@ else
   SIGN_ARGS=(--force --sign - --options runtime)
 fi
 codesign "${SIGN_ARGS[@]}" "$APP/Contents/Resources/7zz"
+codesign "${SIGN_ARGS[@]}" --entitlements "$ROOT/FinderExtension/FinderSync.entitlements" "$APPEX"
 codesign "${SIGN_ARGS[@]}" "$APP"
 codesign --verify --deep --strict --verbose=2 "$APP"
 

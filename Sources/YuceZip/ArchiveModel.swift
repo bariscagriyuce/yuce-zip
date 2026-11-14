@@ -183,6 +183,8 @@ final class ArchiveViewModel: ObservableObject {
 
     var password: String?
     weak var window: NSWindow?
+    /// When true, successful operations don't show a "Done" alert (used by Finder quick actions).
+    var quietSuccess = false
     private var runningProcess: SevenZipProcess?
     private var stats: (files: Int, folders: Int, size: Int64) = (0, 0, 0)
 
@@ -410,14 +412,14 @@ final class ArchiveViewModel: ObservableObject {
     }
 
     /// "Extract Here": into the archive's folder; a new folder is created unless the archive has a single top-level item.
-    func extractHere() async {
+    func extractHere(forceFolder: Bool = false, showInFinder: Bool? = nil) async {
         guard let url = archiveURL, let root else { return }
         let parent = defaultExtractDestination()
         var dest = parent
-        if root.children.count != 1 {
+        if forceFolder || root.children.count != 1 {
             dest = parent.appendingPathComponent(ArchiveTypes.baseName(of: url), isDirectory: true)
         }
-        await extract(ExtractOptions(destination: dest, paths: [], overwrite: "-aou", showInFinder: Prefs.showAfterExtract))
+        await extract(ExtractOptions(destination: dest, paths: [], overwrite: "-aou", showInFinder: showInFinder ?? Prefs.showAfterExtract))
     }
 
     // MARK: Test
@@ -598,6 +600,9 @@ final class ArchiveViewModel: ObservableObject {
 
     @discardableResult
     private func report(_ result: SevenZipResult, success: String, extraButton: String? = nil) async -> Int {
+        if result.succeeded && quietSuccess {
+            return 0
+        }
         if result.succeeded {
             var buttons = [L("common.ok")]
             if let extraButton { buttons.append(extraButton) }

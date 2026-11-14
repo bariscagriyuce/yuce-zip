@@ -34,6 +34,8 @@
 - Finder'daki **Birlikte Aç** menüsünde görünür
 - **Türkçe, English, Português (Brasil)** arayüz — Ayarlar'dan anında değiştirilir
 - **Güncelleme denetimi:** yeni sürümleri GitHub Releases üzerinden kontrol eder
+- **Finder sağ tık menüsü** (7-Zip gibi): *YUCE ZIP ▸* Buraya Çıkart, “ad/” klasörüne çıkart, Arşivi Sına, “ad.7z” / “ad.zip” olarak sıkıştır, Arşive Ekle…
+- **Varsayılan uygulama:** tek tıkla tüm arşiv türleri için varsayılan uygulama olur
 
 ## Kurulum
 
@@ -53,6 +55,24 @@
 | Arşivi sınama | **Sına** düğmesi (⌘T) |
 | Dil değiştirme | **YUCE ZIP → Ayarlar…** (⌘,) |
 | Güncelleme denetimi | **YUCE ZIP → Güncellemeleri Denetle…** |
+
+## Varsayılan uygulama yapma
+
+**YUCE ZIP → Ayarlar… → Sistem Entegrasyonu → “YUCE ZIP'i Arşivler İçin Varsayılan Uygulama Yap”**.
+ZIP, 7z, RAR, TAR, GZ, BZ2, XZ, CAB, RPM, DEB, ARJ, LZH, ZST, WIM vb. türler YUCE ZIP ile açılır (ISO, DMG ve JAR sistemde kalır).
+Elle yapmak için: dosyaya sağ tık → **Bilgi Al → Birlikte Aç: YUCE ZIP → Tümünü Değiştir**.
+
+## Finder sağ tık menüsü
+
+Finder'da bir dosyaya sağ tıklayınca **YUCE ZIP ▸** alt menüsü çıkar:
+
+| Seçili öğe | Seçenekler |
+|---|---|
+| Arşiv | YUCE ZIP ile Aç · Dosyaları Çıkart… · Buraya Çıkart · “ad/” klasörüne çıkart · Arşivi Sına |
+| Her dosya / klasör | Arşive Ekle… · “ad.7z” olarak sıkıştır · “ad.zip” olarak sıkıştır |
+
+Menü ilk açılışta otomatik etkinleşir. Görünmüyorsa **Sistem Ayarları → Genel → Giriş Öğeleri ve Uzantılar → Finder** altında “YUCE ZIP”i açın
+(veya Ayarlar'daki **Eklenti Ayarları…** düğmesi). Menüyü Ayarlar'dan kapatabilirsiniz.
 
 ## Kaynaktan derleme
 
@@ -85,6 +105,8 @@ etiket (ör. `v1.0.1`) yüklü sürümden yeniyse kullanıcıya indirmeyi öneri
 | `Sources/YuceZip/SevenZip.swift` | `7zz` süreç sarmalayıcısı ve çıktı ayrıştırıcı |
 | `Sources/YuceZip/UpdateChecker.swift` | GitHub güncelleme denetimi |
 | `Sources/YuceZip/Localization.swift` | Türkçe / İngilizce / Portekizce çeviriler |
+| `Sources/YuceZip/Integration.swift` | Varsayılan uygulama, Finder menüsü komutları |
+| `FinderExtension/FinderSync.swift` | Finder sağ tık menüsü eklentisi |
 | `scripts/build.sh` | .app paketleme, ikon, imzalama, notarization, DMG |
 
 ## Lisans

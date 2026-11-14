@@ -34,6 +34,8 @@
 - Aparece no menu **Abrir com** do Finder
 - Interface em **Türkçe, English, Português (Brasil)** — troca instantânea nos Ajustes
 - **Verificação de atualizações** pelo GitHub Releases
+- **Menu de clique direito do Finder** (como no 7-Zip): *YUCE ZIP ▸* Extrair Aqui, Extrair para “nome/”, Testar Arquivo, Compactar para “nome.7z” / “nome.zip”, Adicionar ao Arquivo…
+- **App padrão:** com um clique vira o app padrão para todos os tipos de arquivo compactado
 
 ## Instalação
 
@@ -53,6 +55,24 @@
 | Testar um arquivo | Botão **Testar** (⌘T) |
 | Mudar o idioma | **YUCE ZIP → Ajustes…** (⌘,) |
 | Verificar atualizações | **YUCE ZIP → Verificar Atualizações…** |
+
+## Tornar o app padrão
+
+**YUCE ZIP → Ajustes… → Integração com o Sistema → “Tornar o YUCE ZIP o App Padrão para Arquivos”**.
+ZIP, 7z, RAR, TAR, GZ, BZ2, XZ, CAB, RPM, DEB, ARJ, LZH, ZST, WIM etc. passam a abrir com o YUCE ZIP (ISO, DMG e JAR continuam com o sistema).
+Manualmente: clique com o botão direito → **Obter Informações → Abrir com: YUCE ZIP → Alterar Tudo**.
+
+## Menu de clique direito do Finder
+
+Clique com o botão direito num arquivo no Finder para ver o submenu **YUCE ZIP ▸**:
+
+| Seleção | Opções |
+|---|---|
+| Arquivo compactado | Abrir com YUCE ZIP · Extrair Arquivos… · Extrair Aqui · Extrair para “nome/” · Testar Arquivo |
+| Qualquer arquivo / pasta | Adicionar ao Arquivo… · Compactar para “nome.7z” · Compactar para “nome.zip” |
+
+O menu é ativado automaticamente na primeira abertura. Se não aparecer, ative “YUCE ZIP” em
+**Ajustes do Sistema → Geral → Itens de Início e Extensões → Finder** (ou use **Ajustes da Extensão…** nos Ajustes). Você pode desativá-lo nos Ajustes.
 
 ## Compilar a partir do código-fonte
 
@@ -85,6 +105,8 @@ O app consulta `https://api.github.com/repos/bariscagriyuce/yuce-zip/releases/la
 | `Sources/YuceZip/SevenZip.swift` | Wrapper do processo `7zz` e analisador de saída |
 | `Sources/YuceZip/UpdateChecker.swift` | Verificador de atualizações via GitHub |
 | `Sources/YuceZip/Localization.swift` | Traduções em turco / inglês / português |
+| `Sources/YuceZip/Integration.swift` | App padrão, ações do menu do Finder |
+| `FinderExtension/FinderSync.swift` | Extensão do menu de clique direito do Finder |
 | `scripts/build.sh` | Empacotamento, ícone, assinatura, notarização, DMG |
 
 ## Licença

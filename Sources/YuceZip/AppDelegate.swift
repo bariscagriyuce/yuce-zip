@@ -70,6 +70,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
             if self.windows.isEmpty { self.newWindow() }
         }
         UpdateChecker.shared.checkAtLaunchIfNeeded()
+        SystemIntegration.registerFinderExtensionOnFirstLaunch()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -86,7 +87,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     func application(_ application: NSApplication, open urls: [URL]) {
         var nonArchives: [URL] = []
         for url in urls {
-            if ArchiveTypes.isArchive(url) {
+            if url.scheme == "yucezip" {
+                QuickActions.handle(url)
+            } else if ArchiveTypes.isArchive(url) {
                 openArchive(url)
             } else {
                 nonArchives.append(url)
@@ -115,6 +118,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
 
     func windowClosed(_ wc: BrowserWindowController) {
         windows.removeAll { $0 === wc }
+    }
+
+    /// A window used to show progress for Finder quick actions.
+    func windowForQuickAction() -> BrowserWindowController {
+        let wc = emptyWindow() ?? newWindow()
+        wc.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        return wc
     }
 
     private func emptyWindow() -> BrowserWindowController? {
