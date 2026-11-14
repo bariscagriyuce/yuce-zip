@@ -32,11 +32,7 @@
 **Kurulum**
 1. [Releases](https://github.com/bariscagriyuce/yuce-zip/releases/latest) sayfasından `YUCE-ZIP-x.y.z.dmg` dosyasını indirin.
 2. DMG'yi açın, **YUCE ZIP**'i **Applications** klasörüne sürükleyin.
-3. Uygulama Apple tarafından noter onaylı olmadığı için ilk açılışta: uygulamaya **sağ tıklayın → Aç** deyin
-   (veya *Sistem Ayarları → Gizlilik ve Güvenlik → Yine de Aç*). Gerekirse Terminal'de:
-   ```bash
-   xattr -dr com.apple.quarantine "/Applications/YUCE ZIP.app"
-   ```
+3. Uygulama Apple tarafından imzalı ve onaylıdır (notarized); doğrudan açılır.
 
 Gereksinimler: macOS 13 Ventura veya üzeri, Apple Silicon (M1/M2/M3/M4…).
 
@@ -56,7 +52,7 @@ Gereksinimler: macOS 13 Ventura veya üzeri, Apple Silicon (M1/M2/M3/M4…).
 - **Update checker:** looks for new versions on GitHub Releases
 
 **Install:** download the DMG from [Releases](https://github.com/bariscagriyuce/yuce-zip/releases/latest), drag **YUCE ZIP** to **Applications**.
-The app is not notarized, so the first time **right-click → Open** it (or run the `xattr` command above).
+The app is signed with a Developer ID and notarized by Apple.
 
 Requirements: macOS 13 Ventura or later, Apple Silicon.
 
@@ -75,7 +71,7 @@ Requirements: macOS 13 Ventura or later, Apple Silicon.
 - **Verificação de atualizações** pelo GitHub Releases
 
 **Instalação:** baixe o DMG em [Releases](https://github.com/bariscagriyuce/yuce-zip/releases/latest) e arraste o **YUCE ZIP** para **Aplicativos**.
-Como o app não é notarizado, na primeira vez clique com o **botão direito → Abrir**.
+O app é assinado com Developer ID e notarizado pela Apple.
 
 ---
 
@@ -83,7 +79,8 @@ Como o app não é notarizado, na primeira vez clique com o **botão direito →
 
 ```bash
 brew install sevenzip      # 7zz motoru / engine
-./scripts/build.sh         # -> build/YUCE ZIP.app + dist/YUCE-ZIP-<version>.dmg
+./scripts/build.sh         # -> imzalı + notarize / signed + notarized DMG
+# NOTARY_PROFILE=<profil> ./scripts/build.sh  (varsayılan: pdfstudio-notary)
 ```
 
 Sürüm numarası `VERSION` dosyasındadır. Yeni sürüm yayımlamak için / To publish a new version:

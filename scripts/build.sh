@@ -78,7 +78,7 @@ rm -rf "$STAGE"
 [[ -n "$SIGN_IDENTITY" ]] && codesign --force --sign "$SIGN_IDENTITY" --timestamp "$DMG"
 
 # Notarization (needs: xcrun notarytool store-credentials "$NOTARY_PROFILE" ...)
-NOTARY_PROFILE="${NOTARY_PROFILE:-yucezip-notary}"
+NOTARY_PROFILE="${NOTARY_PROFILE:-pdfstudio-notary}"
 if [[ -n "$SIGN_IDENTITY" ]] && xcrun notarytool history --keychain-profile "$NOTARY_PROFILE" >/dev/null 2>&1; then
   echo "==> Notarizing (this can take a few minutes)"
   xcrun notarytool submit "$DMG" --keychain-profile "$NOTARY_PROFILE" --wait
